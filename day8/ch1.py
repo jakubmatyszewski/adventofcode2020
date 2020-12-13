@@ -3,7 +3,7 @@ def get_rules(input_array):
     instructions = [i.split(' ') for i in input_array]
     infinite = False
     index = 0
-    history = [0]
+    history = []
     while infinite is not True:
         history.append(index)
         instruction = instructions[index]
