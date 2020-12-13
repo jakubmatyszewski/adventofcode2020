@@ -1,3 +1,17 @@
+def encryption_weakness(input_array, target):
+    start = 0
+    curr_sum = 0
+    for i, val in enumerate(input_array):
+        curr_sum += val
+        while curr_sum > target:
+            curr_sum -= input_array[start]
+            start += 1
+        if curr_sum == target:
+            small = min(input_array[start:i + 1])
+            large = max(input_array[start:i + 1])
+            return small + large
+
+
 def encoding_error(input_array):
     for min_preamble, entry in enumerate(input_array):
         max_preamble = min_preamble + 25
@@ -30,4 +44,4 @@ def from_txt(filepath='input.txt'):
 
 if __name__ == "__main__":
     input_array = from_txt()
-    print(encoding_error(input_array))
+    print(encryption_weakness(input_array, encoding_error(input_array)))
